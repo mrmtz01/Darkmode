@@ -1,24 +1,28 @@
-import './style.css'
-import javascriptLogo from './javascript.svg'
-import viteLogo from '/vite.svg'
-import { setupCounter } from './counter.js'
+let activateDarkMode
 
-document.querySelector('#app').innerHTML = `
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-      <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
-    </a>
-    <h1>Hello Vite!</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite logo to learn more
-    </p>
-  </div>
-`
+//seleccionamos el boton de html
+const btn = document.querySelector("button")
+const card = document.getElementById("card")
 
-setupCounter(document.querySelector('#counter'))
+//definir una funcion que se ejecuta al momento decargar html
+document.addEventListener("DOMContentLoaded", () => {
+  console.log("contenido de la pagina ha cargado")
+  darkMode()
+
+})
+
+const darkMode = () =>{
+  activateDarkMode = !activateDarkMode
+  if (activateDarkMode){
+  console.log("Light Mode Activated")
+  btn.innerHTML = "Dark Mode"
+  btn.classList.add("btn-dark")
+  card.classList.replace("text-bg-dark", "text-bg-light")
+ 
+} else {
+    console.log("Dark Mode Activated")
+    btn.innerHTML = "Light Mode"
+    btn.classList.replace("btn-dark", "btn-light")
+    card.classList.replace("text-bg-light", "text-bg-dark")
+  }
+}
